@@ -1,6 +1,7 @@
-#Imports
+#region Imports
 import numpy as np
 import requests
+#endregion Imports
 
 #Init
 DATABASE = [
@@ -63,8 +64,7 @@ DATABASE = [
 ]
 
 #Main
-if __name__ == "__main__":
-    #Aquiring and organizing data
+def getDB():
     DB = []
     for DATA_SITE in DATABASE:
         r = requests.get(DATA_SITE[1])
@@ -76,5 +76,9 @@ if __name__ == "__main__":
             dataSheet.append(country.split(","))
         parcel = (DATA_SITE[0], dataSheet)
         DB.append(parcel)
+    return dataKeys, DB
 
-print("Done") #Line to enable breakpoints for debug purposes
+if __name__ == "__main__":
+    #Aquiring and organizing data
+    getDB()
+    print("Done") #Line to enable breakpoints for debug purposes
