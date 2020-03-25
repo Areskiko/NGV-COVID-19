@@ -1,7 +1,7 @@
 #region Import
 import matplotlib.pyplot as plt
 import datetime
-from main import getDB
+from dataAcquisition import getDB
 #endregion Import
 
 keysList, data = getDB()
