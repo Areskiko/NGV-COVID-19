@@ -1,5 +1,6 @@
 #imports
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 url = "https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_daily_reports/03-17-2020.csv"
@@ -7,3 +8,13 @@ url = "https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/
 data = pd.read_csv(url, delimiter = ",") #reading data form the csv-file
 
 print(data) #printing the pandas data frame
+
+countries = data["Country/Region"] 
+confirmed = data["Confirmed"]
+
+
+#The plot
+plt.bar(countries[0:20], confirmed[0:20]) #plotting the number of confirmed cases from the 20 first countries in the data frame
+plt.xticks(rotation=45) 
+plt.xlabel("Country")
+plt.ylabel("Confirmed cases")
