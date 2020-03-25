@@ -1,0 +1,9 @@
+#imports
+import pandas as pd
+
+
+url = "https://github.com/CSSEGISandData/COVID-19/raw/master/csse_covid_19_data/csse_covid_19_daily_reports/03-17-2020.csv"
+
+data = pd.read_csv(url, delimiter = ",") #reading data form the csv-file
+
+print(data) #printing the pandas data frame
