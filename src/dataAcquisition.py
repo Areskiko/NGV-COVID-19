@@ -1,6 +1,7 @@
 #region Imports
 import numpy as np
 import requests
+import datetime
 #endregion Imports
 
 #Init
@@ -77,6 +78,19 @@ def getDB():
         parcel = (DATA_SITE[0], dataSheet)
         DB.append(parcel)
     return dataKeys, DB
+
+def extractPoints(TargetType, TargetLocation, Target, keys, data):
+    plotPointsx = [datetime.datetime.strptime(row[0],r"%d-%m-%Y").date() for row in data]
+    plotPointsy = []
+    for row in data:
+        found = False
+        for place in row[1][:-1]:
+            if place[keys[TargetType]] == TargetLocation:
+                plotPointsy.append(int(place[keys[Target]]))
+                found = True
+        if not found:
+            plotPointsy.append(0)
+    return plotPointsx, plotPointsy
 
 if __name__ == "__main__":
     #Aquiring and organizing data
